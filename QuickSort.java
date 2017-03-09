@@ -81,12 +81,12 @@ public class QuickSort
 
 
     /*****************************************************
-     * void qsort(int[])
+     * void sort(int[])
      * @param d -- array of ints to be sorted in place
      *****************************************************/
-    public static void qsort( int[] d )
+    public static void sort( int[] d )
     {
-      qsortH(d, 0, d.length-1);
+      sortH(d, 0, d.length-1);
     }
 
     // Thinkers are encouraged to roll their own subroutines.
@@ -112,14 +112,14 @@ public class QuickSort
 	return s; //index of partition/pivot
     }
 
-    public static void qsortH(int[] arr, int left, int right)
+    public static void sortH(int[] arr, int left, int right)
     {
       if (left < right){
         int pivotIndex = randomPivot(left, right);
         pivotIndex = partition(arr, left, right, pivotIndex);
-        qsortH(arr, left, right-1);
+        sortH(arr, left, right-1);
         //call on left partitioned part
-        qsortH(arr, left+1, right);
+        sortH(arr, left+1, right);
         //call on right partitioned part
       }
     }
@@ -135,8 +135,8 @@ public class QuickSort
 	System.out.println("\narr1 init'd to: " );
 	printArr(arr1);
 
-	qsort( arr1 );
-       	System.out.println("arr1 after qsort: " );
+	sort( arr1 );
+       	System.out.println("arr1 after sort: " );
 	printArr(arr1);
 
 	// randomly-generated arrays of n distinct vals
@@ -151,7 +151,7 @@ public class QuickSort
        	System.out.println("arrN post-shuffle: " );
 	printArr(arrN);
 
-	qsort( arrN );
+	sort( arrN );
 	System.out.println("arrN after sort: " );
 	printArr(arrN);
   /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y)
@@ -165,24 +165,24 @@ public class QuickSort
 	System.out.println("\narr2 init'd to: " );
 	printArr(arr2);
 
-	qsort( arr2 );
-       	System.out.println("arr2 after qsort: " );
+	sort( arr2 );
+       	System.out.println("arr2 after sort: " );
 	printArr(arr2);
 
   int [] arr3 = {7,8,7,14,8,7,7,7,8,8,9,7,7,8,8};
 	System.out.println("\narr3 init'd to: " );
 	printArr(arr3);
 
-	qsort( arr3 );
-       	System.out.println("arr3 after qsort: " );
+	sort( arr3 );
+       	System.out.println("arr3 after sort: " );
 	printArr(arr3);
 
   int [] arr4 = {5,5,3,7,8,7,14,8,7,7,7,8,8,9,7,7,8,8,5,5,4};
 	System.out.println("\narr4 init'd to: " );
 	printArr(arr4);
 
-	qsort( arr4 );
-       	System.out.println("arr3 after qsort: " );
+	sort( arr4 );
+       	System.out.println("arr3 after sort: " );
 	printArr(arr4);
 
 	// arrays of randomly generated ints
@@ -197,7 +197,7 @@ public class QuickSort
        	System.out.println("arrMatey post-shuffle: " );
 	printArr(arrMatey);
 
-	qsort( arrMatey );
+	sort( arrMatey );
 	System.out.println("arrMatey after sort: " );
 	printArr(arrMatey);
   /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y)
