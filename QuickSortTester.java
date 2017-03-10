@@ -40,7 +40,7 @@ public class QuickSortTester  {
     }
 
     public static void main(String[] args) {
-	for (int i = 1000; i < 10000; i += 1000)
+	for (int i = 10000; i <= 100000; i += 10000)
 	    System.out.println("Duration for n = " + i + ": " + testSort_avg(i));
     }
 }
