@@ -19,6 +19,6 @@ Generate an array of random integers (size is specified with each call), then st
 ###Time Measurements:
 
 ###Data Arrangement:
-It's more dependent on the choice of a pivot rather than data arrangement since partition moves everything around depending on the pivot point, unless our code calls for calling a certain point as our pivot. In that case, if we have a sorted array and the chosen pivot ends up being an element that's close to the median, we'd end up with a faster runtime, and slow if we pick something near the ends. If the case is that we have a randomly arranged array, it doesn't matter what our selected pivot point is, since we'd be equally likely to get a good pivot point. 
+It's more dependent on the choice of a pivot rather than data arrangement since partition moves everything around depending on the value at the pivot point, unless our code calls for calling a certain point as our pivot. In that case, if we have a sorted array and the chosen pivot ends up being an element that's close to the median, we'd end up with a faster runtime, and slow if we pick a point with an element with a value near the min/max. If the case is that we have a randomly arranged array, it doesn't matter what our selected pivot point is, since we'd be equally likely to get a pivot point with a good value. 
 
 
