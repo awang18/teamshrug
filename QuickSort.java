@@ -1,42 +1,5 @@
-//Allan Wang
-//APCS2-p4
-//HW15 - So So Quick
-//2017-03-09
-/*****************************************************
- * class QuickSort
- * (skeleton) <<delete this line if untrue>>
- * Implements quicksort algo to sort an array of ints in place
- *
- * 1. Summary of QuickSort algorithm:
- * QSort(arr):
- * Divide an array into two parts, being the lower elements depending
- * on a certain pivot value and the higher elements. Recursively solve
- * for each of these sub-arrays.
- * 2a. Worst pivot choice / array state and associated runtime:
- * By picking pivots on the ends of the array, one sub-array is only
- * going to have one element, and the other n-1. With N operations
- * per level, the worst-case runtime for QuickSort is O(N^2).
- * 2b. Best pivot choice / array state and associated runtime:
- * The best case pivot choice is the middle of the array. If we
- * assume that the algorithm always picks the middle element,
- * the array will be sorted into two equal halves each time, so
- * it'll take log(N) splits until we get single elements into
- * sub-arrays. Since there are log(N) levels to QuickSort and each
- * involves N operations, the best-case runtime for QuickSort should be
- * Nlog(n)
- * 3. Approach to handling duplicate values in array:
- * To avoid O(n^2) runtime, would it be possible to just not deal with
- * all duplicates and keep them in a sub-array while regularly sorting/Partitioning
- * the rest of the array?
- *****************************************************/
 
-/***
-    PROTIP: Assume no duplicates during initial development phase.
-    Once you have a working implementation, test against arrays
-    with duplicate values, and revise if necessary. (Backup first.)
- ***/
-
-public class QuickSort
+public class QuickSort 
 {
     //--------------v  HELPER METHODS  v--------------
     //swap values at indices x, y in array o
@@ -46,7 +9,7 @@ public class QuickSort
 	o[y] = tmp;
     }
 
-    //print input array
+    //print input array 
     public static void printArr( int[] a ) {
 	for ( int o : a )
 	    System.out.print( o + " " );
@@ -72,70 +35,59 @@ public class QuickSort
 	return retArr;
     }
 
-    //return randomPivot index
-    public static int randomPivot(int left, int right){
-      return left + (int)Math.random() * (right - left);
+    public static void swap(int[] arr, int a, int b) {
+	int c = arr[a];
+	arr[a] = arr[b];
+	arr[b] = c;
     }
+
+    public static int partition(int[] arr, int start, int end, int pvtPos) {
+	int v = arr[pvtPos];
+	swap(arr, end, pvtPos);
+	int s = start;
+	for (int i = start; i < end; i++) {
+	    if (arr[i] < v) {
+		swap(arr, s, i);
+		s += 1;
+	    }
+	}
+	swap(arr, end, s);
+	return s;
+    }
+
     //--------------^  HELPER METHODS  ^--------------
-
-
 
     /*****************************************************
      * void sort(int[])
      * @param d -- array of ints to be sorted in place
      *****************************************************/
-    public static void sort( int[] d )
-    {
-      sortH(d, 0, d.length-1);
+    public static void sort( int[] d ) 
+    { 
+	sort(d, 0, d.length - 1);
     }
 
+    public static void sort(int[] arr, int left, int right) {
+	if (left < right) {
+	    int pvtPos = partition(arr, left, right, left + 1);
+	    sort(arr, left, pvtPos - 1);
+	    sort(arr, pvtPos + 1, right);
+	}
+    }
+    
     // Thinkers are encouraged to roll their own subroutines.
     // Insert your auxiliary helper methods here.
 
-    public static int partition( int arr[], int left, int right, int pivotIndex)
-    {
-	int pivotValue = arr[pivotIndex];
-
-	swap( pivotIndex, right, arr); //move pivotValue to right(which can be the end)
-	int s = left;
-
-	for( int i = left; i < right; i++ ) {
-	    if ( arr[i] <= pivotValue) {
-		swap( i, s, arr );
-		s++;
-    //i should > s
-    }
-	}
-	swap(s,right,arr);
-  //move pivotValue to it's final index at the partition index
-
-	return s; //index of partition/pivot
-    }
-
-    public static void sortH(int[] arr, int left, int right)
-    {
-      if (left < right){
-        int pivotIndex = randomPivot(left, right);
-        pivotIndex = partition(arr, left, right, pivotIndex);
-        sortH(arr, left, right-1);
-        //call on left partitioned part
-        sortH(arr, left+1, right);
-        //call on right partitioned part
-      }
-    }
-
 
     //main method for testing
-    public static void main( String[] args )
+    public static void main( String[] args ) 
     {
-
 
 	//get-it-up-and-running, static test case:
 	int [] arr1 = {7,1,5,12,3};
 	System.out.println("\narr1 init'd to: " );
 	printArr(arr1);
 
-	sort( arr1 );
+	sort( arr1 );	
        	System.out.println("arr1 after sort: " );
 	printArr(arr1);
 
@@ -143,7 +95,7 @@ public class QuickSort
 	int[] arrN = new int[10];
 	for( int i = 0; i < arrN.length; i++ )
 	    arrN[i] = i;
-
+       
 	System.out.println("\narrN init'd to: " );
 	printArr(arrN);
 
@@ -154,42 +106,22 @@ public class QuickSort
 	sort( arrN );
 	System.out.println("arrN after sort: " );
 	printArr(arrN);
-  /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y)
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-
-
-
 
 	//get-it-up-and-running, static test case w/ dupes:
 	int [] arr2 = {7,1,5,12,3,7};
 	System.out.println("\narr2 init'd to: " );
 	printArr(arr2);
 
-	sort( arr2 );
+	sort( arr2 );	
        	System.out.println("arr2 after sort: " );
 	printArr(arr2);
 
-  int [] arr3 = {7,8,7,14,8,7,7,7,8,8,9,7,7,8,8};
-	System.out.println("\narr3 init'd to: " );
-	printArr(arr3);
-
-	sort( arr3 );
-       	System.out.println("arr3 after sort: " );
-	printArr(arr3);
-
-  int [] arr4 = {5,5,3,7,8,7,14,8,7,7,7,8,8,9,7,7,8,8,5,5,4};
-	System.out.println("\narr4 init'd to: " );
-	printArr(arr4);
-
-	sort( arr4 );
-       	System.out.println("arr3 after sort: " );
-	printArr(arr4);
 
 	// arrays of randomly generated ints
 	int[] arrMatey = new int[20];
 	for( int i = 0; i < arrMatey.length; i++ )
 	    arrMatey[i] = (int)( 48 * Math.random() );
-
+       
 	System.out.println("\narrMatey init'd to: " );
 	printArr(arrMatey);
 
@@ -200,8 +132,6 @@ public class QuickSort
 	sort( arrMatey );
 	System.out.println("arrMatey after sort: " );
 	printArr(arrMatey);
-  /*~~~~s~l~i~d~e~~~m~e~~~d~o~w~n~~~~~~~~~~~~~~~~~~~~ (C-k, C-k, C-y)
-	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
     }//end main
 
