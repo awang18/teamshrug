@@ -20,7 +20,6 @@ Generate an array of random integers (size is specified with each call), then st
 Three trials on randomly ordered arrays ranging from 10000-100000 items
 
 Trial 1:
-
 -Duration for n = 10000: 3.9168995952606203
 -Duration for n = 20000: 7.608818998336792
 -Duration for n = 30000: 11.752984237670898
@@ -33,7 +32,6 @@ Trial 1:
 -Duration for n = 100000: 42.56484268188476
 
 Trial 2:
-
 -Duration for n = 10000: 4.04187038898468
 -Duration for n = 20000: 7.518881759643555
 -Duration for n = 30000: 11.579692077636718
@@ -46,7 +44,6 @@ Trial 2:
 -Duration for n = 100000: 44.676727828979494
 
 Trial 3:
-
 -Duration for n = 10000: 4.067324500083924
 -Duration for n = 20000: 7.588305444717407
 -Duration for n = 30000: 11.80792932510376
