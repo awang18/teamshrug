@@ -10,7 +10,7 @@
   Calculate difference between start and end times
   Multiply by 1000000 to get time in milliseconds
   Repeat 50 times and take the average to get runtime
- */
+*/
 
 public class QuickSortTester  {
 
@@ -42,5 +42,6 @@ public class QuickSortTester  {
     public static void main(String[] args) {
 	for (int i = 10000; i <= 100000; i += 10000)
 	    System.out.println("Duration for n = " + i + ": " + testSort_avg(i));
+	System.out.println("--------------------------------------------------");
     }
 }
